@@ -12,6 +12,6 @@ from .base import AuditBaseModel
 class Organization(AuditBaseModel):
     """Organization model class."""
 
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40, unique=True)
     description = models.CharField(max_length=140, null=True, blank=True)
-    domain = models.CharField(max_length=30)
+    domain = models.CharField(max_length=30, unique=True)
