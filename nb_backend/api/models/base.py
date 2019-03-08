@@ -25,7 +25,7 @@ class AuditBaseModel(Base):
     """Audit class"""
 
     created_by = models.UUIDField(null=True)
-    created_on = models.DateTimeField(default=timezone.now())
+    created_on = models.DateTimeField(default=timezone.now)
     edited_by = models.UUIDField(null=True)
     edited_on = models.DateTimeField(null=True)
     deleted_by = models.UUIDField(null=True)

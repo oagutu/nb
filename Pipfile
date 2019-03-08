@@ -4,12 +4,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest-cov = "*"
+v = {editable = true,version = "*"}
 
 [packages]
 django = "*"
 djangorestframework = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.6"
