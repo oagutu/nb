@@ -19,5 +19,5 @@ from django.urls import path, include
 # pylint: disable=invalid-name
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1', include('api.urls')),
+    path('api/v1/', include('api.urls')),
 ]

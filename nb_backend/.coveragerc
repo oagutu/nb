@@ -1,0 +1,7 @@
+[report]
+include = 
+    api/*
+
+omit = 
+    */tests/*
+    */migrations/*
