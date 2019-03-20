@@ -1,7 +1,8 @@
-[report]
-include = 
-    api/*
+[run]
+source = api
 
+[report]
 omit = 
-    */tests/*
-    */migrations/*
+    api/tests/*
+    api/migrations/*
+    *apps.py*
