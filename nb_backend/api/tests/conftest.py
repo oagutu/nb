@@ -8,7 +8,10 @@ import pytest
 from rest_framework.test import APIClient
 
 # models
-from ..models.organization import Organization
+from api.models.organization import Organization
+from api.models.department import Department
+
+# pylint: disable=redefined-outer-name
 
 @pytest.fixture(scope='module')
 def client():
@@ -51,11 +54,11 @@ def org_data():
     }
 
 @pytest.fixture
-def add_org(org_data):  # pylint: disable=redefined-outer-name
+def add_org(org_data):
     """Creates Organization instance.
 
     Args:
-        org_list (func): Returns org data.
+        org_data (func): Returns org data.
 
     Returns:
         obj: Organization model instance.
@@ -63,3 +66,37 @@ def add_org(org_data):  # pylint: disable=redefined-outer-name
 
     org = Organization.objects.create(**org_data['testorgtwo'])
     return org
+
+@pytest.fixture
+def dept_data(add_org):
+    """Department test data.
+
+    Args:
+        add_org (obj): Organization obj fixture.
+
+    Returns:
+        dict: Test department data.
+    """
+    return {
+        'test_dept': {
+            'name': 'TestDept',
+            'description': 'Test department',
+            'organization': str(add_org.id)
+        }
+    }
+
+@pytest.fixture
+def add_dept(dept_data, add_org):
+    """Creates Department instance.
+
+    Args:
+        dept_data (func): Returns org data.
+        add_org (func): Organization obj fixture.
+
+    Returns:
+        obj: Department model instance.
+    """
+    data = dept_data['test_dept']
+    data.update({'organization': add_org})
+
+    return Department.objects.create(**data)

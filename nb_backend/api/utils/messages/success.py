@@ -6,3 +6,5 @@ SUCCESS = {
     'update_entry': '{} entry successfully updated',
     'delete_entry': '\'{}\' entry successfully deleted',
 }
+
+# TODO: update 'create_entry` msg to follow the format -> "{Department} {XXX} successfully created"
