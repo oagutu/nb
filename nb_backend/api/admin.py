@@ -7,6 +7,8 @@ api app admin module.
 from django.contrib import admin
 
 # models
-from .models.organization import Organization
+from api.models.organization import Organization
+from api.models.department import Department
 
 admin.site.register(Organization)
+admin.site.register(Department)
