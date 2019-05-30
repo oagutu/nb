@@ -37,7 +37,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            pipenv run pytest nb_backend/
+            pipenv run pytest
 
       - store_test_results:
             path: test-results
