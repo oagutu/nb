@@ -5,6 +5,9 @@ jobs:
   build:
     working_directory: ~/nb_dir
 
+    environment:
+      CC_TEST_REPORTER_ID: ${CC_TEST_REPORTER_ID}
+
     docker:
       - image: circleci/python:3.6.5
         environment:
@@ -34,10 +37,22 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.6/site-packages"
+
       - run:
-          name: run tests
+          name: code climate test reporter setup
           command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run:
+          name: Run tests
+          command: | 
+            # notify Code Climate of a pending test report using `before-build`
+            ./cc-test-reporter before-build
+            # Run tests
             pipenv run pytest nb_backend/
+            # upload test report to Code Climate using `after-build`
+            ./cc-test-reporter after-build --coverage-input-type coverage.py --exit-code $?
 
       - store_test_results:
             path: test-results

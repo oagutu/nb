@@ -1,6 +1,8 @@
 # NoticeBoard
 
 [![CircleCI](https://circleci.com/gh/oagutu/nb/tree/develop.svg?style=svg)](https://circleci.com/gh/oagutu/nb/tree/develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0cb745735851f2dd68d0/maintainability)](https://codeclimate.com/github/oagutu/nb/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0cb745735851f2dd68d0/test_coverage)](https://codeclimate.com/github/oagutu/nb/test_coverage)
 
 #### Brief Desc:
 
