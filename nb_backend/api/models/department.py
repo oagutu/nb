@@ -16,6 +16,6 @@ from api.models.organization import Organization
 class Department(AuditBaseModel):
     """Department model class."""
 
-    name = models.CharField(max_length=40, unique=True)
+    name = models.CharField(max_length=40)
     description = models.CharField(max_length=140, null=True, blank=True)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)

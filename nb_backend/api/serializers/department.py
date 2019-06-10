@@ -4,7 +4,7 @@ Department serializer module.
 """
 
 # rest_framework
-from rest_framework import exceptions
+from rest_framework import exceptions, validators
 
 # serializer
 from api.serializers.base_serializer import BaseModelSerializer
@@ -24,6 +24,10 @@ class DepartmentSerializer(BaseModelSerializer):
         """Serializer metadata class."""
         model = Department
         fields = '__all__'
+        validators = [validators.UniqueTogetherValidator(
+            queryset=Department.objects.all(),
+            fields=('name', 'organization')
+        )]
 
     def validate_name(self, value):
         """Checks that department name is valid.
