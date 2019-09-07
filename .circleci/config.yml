@@ -5,9 +5,6 @@ jobs:
   build:
     working_directory: ~/nb_dir
 
-    environment:
-      CC_TEST_REPORTER_ID: ${CC_TEST_REPORTER_ID}
-
     docker:
       - image: circleci/python:3.6.5
         environment:
