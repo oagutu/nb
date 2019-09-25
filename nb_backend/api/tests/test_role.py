@@ -2,6 +2,7 @@
 
 # 3rd party
 import pytest
+from django.core.management import call_command
 
 # models
 from api.models.role import Role
@@ -106,3 +107,9 @@ class TestRole:
         for data in response.data['data']:
             assert len(data) == 1
             assert 'id' in data
+
+    def test_seed_roles_command(self):
+        """Tests running the seed_roles command succeeds."""
+
+        call_command('seed_roles')
+        assert Role.objects.all().count() == 5
