@@ -10,14 +10,17 @@ from rest_framework.test import APIClient
 # models
 from api.models.organization import Organization
 from api.models.department import Department
+from api.models.role import Role
 
 # pylint: disable=redefined-outer-name
+
 
 @pytest.fixture(scope='module')
 def client():
     """Creates test client."""
 
     return APIClient()
+
 
 @pytest.fixture(scope='module')
 def gen_uuid():
@@ -31,6 +34,7 @@ def gen_uuid():
     """
 
     return uuid.uuid4()
+
 
 @pytest.fixture
 def org_data():
@@ -53,6 +57,7 @@ def org_data():
         }
     }
 
+
 @pytest.fixture
 def add_org(org_data):
     """Creates Organization instance.
@@ -66,6 +71,7 @@ def add_org(org_data):
 
     org = Organization.objects.create(**org_data['testorgtwo'])
     return org
+
 
 @pytest.fixture
 def dept_data(add_org):
@@ -85,6 +91,7 @@ def dept_data(add_org):
         }
     }
 
+
 @pytest.fixture
 def add_dept(dept_data, add_org):
     """Creates Department instance.
@@ -100,3 +107,15 @@ def add_dept(dept_data, add_org):
     data.update({'organization': add_org})
 
     return Department.objects.create(**data)
+
+
+@pytest.fixture
+def add_role():
+    """Creates Role instance.
+
+    Returns:
+        obj: Role model instance.
+    """
+
+    return Role.objects.create(role_type='user')
+
